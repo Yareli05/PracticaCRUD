@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-light" style="background-color: whitesmoke;">
+ <a class="navbar-brand" href="/">
+  Operaciones CRUD          Yareli Melinna Hernandez Campuzano 
+  
+</a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <ul class="list-group">
+        <li 
+        *ngFor="let alumno of alumnoArray"
+        class="list-group-item list-group-item-action"
+        (click)="openForEdit(alumno)"
+        [class.active]="alumno == selectedAlumno">
+        <span class="badge badge-primary">{{ alumno.id }}</span>{{alumno.nombre}}-{{alumno.apellido}}
+
+        </li>
+
+      </ul>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Insertar un nuevo alumno.
+            </div>
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.nombre" placeholder="Insertar nombre" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.apellido" placeholder="Insertar apellido" class="form-control">
+            </div>
+
+            <button (click)="addOrEdit()" class="btn btn-primary mt-4">
+              Registrar
+            </button>
+
+            <button
+            *ngIf="selectedAlumno.id !==0"
+            class="btn btn-danger"
+            (click)="Eliminar()">
+            Eliminar
+            </button>
+
+            <form #loginForm="ngForm" (ngIngresar)="login(loginForm)" >
+              <input type="text" name="email" placeholder="Email" ngModel>
+              <input type="password" name="password" id="password" placeholder="Password" ngModel>
+              <button type="ingresar"> login </button>
+          </form>
+
+
+        </div>
+      </div>
+    
+
+      </div>
+      <div class="col-md-4">
+    </div>
+
+  </div>
+
+</div>
